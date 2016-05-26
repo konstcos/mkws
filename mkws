@@ -1,0 +1,46 @@
+#!/usr/bin/php
+<?php require_once(dirname(__FILE__) ."/src/init.php");
+
+
+
+$mkws->which_task();
+
+switch($mkws->get_switch()) {
+
+
+    case 'create a website':
+
+        $mkws->enter_site_name();
+
+        $mkws->make_work_folder();
+        $mkws->make_sys_folder();
+        $mkws->bind_folders();
+        $mkws->make_conf();
+        $mkws->enable_conf();
+        $mkws->add_hosts();
+        $mkws->apache_restart();
+
+        break;
+
+
+    case 'remove site':
+
+        $mkws->enter_dell_site();
+        $mkws->make_backup();
+        $mkws->ubind_folder();
+        $mkws->dell_work_folder();
+        $mkws->dell_sys_folder();
+
+        $mkws->dell_conf();
+
+        $mkws->clear_hosts();
+        $mkws->apache_restart();
+
+        break;
+
+
+    default:
+        $mkws->clear_screen();
+
+}
+
